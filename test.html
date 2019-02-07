@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+  var c;
+  var ctx;
+  var img;
+  var img2;
+  var x = 0;
+  var y = 0;
+  var x1 = [];
+  var y1 = 100;
+
+  function Init()
+{
+  c = document.getElementById("myCanvas");
+  ctx = c.getContext("2d");
+  img = new Image();
+  img2 = new Image();
+  img.src = "randomimage.png";
+  img2.src = "img2.png";
+  setInterval(Draw, 100);
+
+
+
+  window.addEventListener('keydown', function(event)
+{
+KeyInput();
+}, false);
+}
+function Draw()
+{
+
+ctx.clearRect(0,0,c.width,c.height);
+
+ctx.drawImage(img,x,y);
+
+
+}
+
+function KeyInput()
+{
+switch (event.keyCode)
+{
+case 37: // Left
+alert("fish");
+x++;
+case 38: // Up
+y--;
+case 39:
+x++; // Right
+case 40: // Down
+y++;
+}
+}
+
+function right()
+{
+  x=x+50;
+
+
+
+}
+
+function down(){
+    y=y+50;
+}
+</script>
+</head>
+<body onload="Init()">
+
+<p>Canvas to fill:</p>
+<canvas id="myCanvas" width="450" height="300"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<p><button onclick="right()" >right</button></p>
+<p><button onclick="down()" >down</button></p>
+</body>
+</html>

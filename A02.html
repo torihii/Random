@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var c;
+var ctx;
+var img;
+var x = 0;
+var y = [];
+function Init()
+{
+c = document.getElementById("myCanvas");
+ctx = c.getContext("2d");
+img = new Image();
+img.src = "https://cdn.kastatic.org/images/badges/moon/good-answer-40x40.png";
+setInterval(Draw, 100);
+for(i=0; i < 4; i++)
+y[i] = i*100;
+window.addEventListener('keydown', function(event)
+{
+KeyInput();
+}, false);
+}
+function Draw()
+{
+x++;
+ctx.clearRect(0,0,c.width,c.height);
+for(i=0; i < 4; i++)
+ctx.drawImage(img,x,y[i]);
+}
+function Reset()
+{
+x=0;
+}
+function KeyInput()
+{
+switch (event.keyCode)
+{
+case 37: // Left
+break;
+case 38: // Up
+y[0] --;
+break;
+case 39: // Right
+break;
+case 40: // Down
+y[0]++;
+break;
+}
+}
+</script>
+</head>
+<body onload="Init()">
+<p>Image to use:</p>
+<img id="scream" src="https://cdn.kastatic.org/images/badges/moon/good-answer-
+40x40.png">
+<p>Canvas to fill:</p>
+<canvas id="myCanvas" width="450" height="300"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<p><button onclick="Reset()">Try it</button></p>
+</body>
+</html>
